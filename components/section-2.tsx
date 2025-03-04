@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef } from "react";
-import Image from "next/image";
 import {
   motion,
   useMotionTemplate,
@@ -8,9 +7,7 @@ import {
   useTransform,
 } from "motion/react";
 
-type Props = {};
-
-const Section2Component = (props: Props) => {
+const Section2Component = () => {
   const ref = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -18,14 +15,8 @@ const Section2Component = (props: Props) => {
     offset: ["start center", "end end"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.5, 1]);
-
   const clip1 = useTransform(scrollYProgress, [0, 1], [25, 0]);
   const clip2 = useTransform(scrollYProgress, [0, 1], [75, 100]);
-
-  const position = useTransform(scrollYProgress, (pos) =>
-    pos >= 1 ? "relative" : "sticky",
-  );
 
   const textOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.5, 0]);
 

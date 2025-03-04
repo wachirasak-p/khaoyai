@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${kanit.className} antialiased`}>{children}</body>
+      <body className={`${kanit.className} bg-neutral-900 antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

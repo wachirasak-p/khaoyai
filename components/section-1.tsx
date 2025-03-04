@@ -1,72 +1,59 @@
 "use client";
-import React, { useRef } from "react";
-import Image from "next/image";
-import {
-  motion,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "motion/react";
+import React from "react";
+import { NumberTicker } from "./magicui/number-ticker";
 
-type Props = {};
-
-const Section1Component = (props: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: ref,
-  //   offset: ["start start", "end end"],
-  // });
-
-  // const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-  const SECTION_HEIGHT = 1500;
-
-  const { scrollYProgress, scrollY } = useScroll({
-    target: ref,
-    offset: ["start end", "end end"],
-  });
-
-  const clip1 = useTransform(scrollY, [0, 1500], [25, 0]);
-  const clip2 = useTransform(scrollY, [0, 1500], [75, 100]);
-
-  const clipPath = useMotionTemplate`polygon(${clip1}% ${clip1}%, ${clip2}% ${clip1}%, ${clip2}% ${clip2}%, ${clip1}% ${clip2}%)`;
-
-  const backgroundSize = useTransform(
-    scrollY,
-    [0, SECTION_HEIGHT + 500],
-    ["170%", "100%"]
-  );
-
-  // const backgroundSize = useTransform(scrollY, [0, 1], ["20%", "100%"]);
-
-  const opacity = useTransform(
-    scrollY,
-    [SECTION_HEIGHT, SECTION_HEIGHT + 500],
-    [1, 1]
-  );
-
-  const position = useTransform(scrollYProgress, (pos) =>
-    pos >= 1500 ? "relative" : "sticky"
-  );
-
+const Section1Component = () => {
   return (
-    <div ref={ref} className="  w-full">
-      {/* <motion.div style={{ position }}> */}
-      <motion.div
-        className="sticky top-0 h-screen w-full"
-        style={{
-          clipPath,
-          backgroundSize,
-          opacity,
-          // position,
-          // backgroundImage:
-          //   "url(https://images.unsplash.com/photo-1460186136353-977e9d6085a1?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-          backgroundImage: "url(/images/view1.jpg)",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      {/* </motion.div> */}
+    <div className="relative w-full bg-neutral-900 px-8 py-10 text-white">
+      <div className="container mx-auto">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <h2 className="text-3xl font-bold text-green-600">
+            &quot;ธรรมชาติ&quot; และ &quot;อากาศบริสุทธิ์&quot;
+            ไม่ไกลจากเมืองหลวง ที่หลายคนฝันถึงและอยากจะมาสัมผัสสักครั้ง
+            อุทยานที่เป็นผืนป่ามรดกโลก ดินแดนสวรรค์แห่งนักท่องไพร
+            และบ้านหลังใหญ่ของสัตว์ป่า
+          </h2>
+          <h4 className="text-lg">
+            อุทยานแห่งชาติเขาใหญ่ มีความสำคัญในระดับโลกและระดับภูมิภาคอาเซียน
+            คือ เป็นหนึ่งในพื้นที่มรดกโลกทางธรรมชาติ (World Heritage Site)
+            และอุทยานมรดกแห่งอาเซียน (ASEAN Heritage Park) ครอบคลุม 4 จังหวัด
+            ประกอบด้วย สระบุรี นครราชสีมา ปราจีนบุรี และนครนายก
+          </h4>
+          <h4 className="text-lg">
+            พื้นที่เกือบ 2,206
+            ตารางกิโลเมตรของอุทยานแห่งชาติจึงเป็นแหล่งกำเนิดต้นน้ำลำธารที่สำคัญหลายสาย
+            ที่มีความหลากหลายทางชีวภาพ และเป็นบ้านหลังใหญ่ของสิ่งมีชีวิตที่สำคัญ
+            หายาก และใกล้สูญพันธุ์หลายชนิด รวมถึงนกมากกว่า 280 ชนิด
+            จึงทำให้เป็นที่นิยมของนักดูนกจากทั่วโลก
+          </h4>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-4 border-t border-neutral-700 py-4 md:grid-cols-3">
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-lg">ครอบคลุม</p>
+            <NumberTicker
+              value={4}
+              className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-green-600"
+            />
+            <p className="text-lg">จังหวัด</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-lg">พื้นที่</p>
+            <NumberTicker
+              value={2206}
+              className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-green-600"
+            />
+            <p className="text-lg">ตารางกิโลเมตร</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-lg">นก</p>
+            <NumberTicker
+              value={280}
+              className="whitespace-pre-wrap text-8xl font-medium tracking-tighter text-green-600"
+            />
+            <p className="text-lg">ชนิด</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

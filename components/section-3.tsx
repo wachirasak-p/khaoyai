@@ -1,14 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import Image from "next/image";
-import {
-  motion,
-  MotionValue,
-  useMotionTemplate,
-  useScroll,
-  useTransform,
-} from "motion/react";
-import { TypingAnimation } from "./magicui/typing-animation";
+import { motion, useScroll, useTransform } from "motion/react";
 
 const cards = [
   {
@@ -51,7 +43,7 @@ const Section3Component = () => {
       <section ref={targetRef} className="relative h-[300vh] bg-neutral-900">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <div className="flex flex-col gap-4">
-            <span className="w-screen text-center text-[4vw] font-bold uppercase text-white">
+            <span className="w-screen text-center text-[6vw] font-bold uppercase text-white xl:text-[2vw] 2xl:text-[1.5vw]">
               กิจกรรมในอุทยาน
             </span>
 
@@ -86,7 +78,7 @@ const Card = ({
         className="absolute inset-0 z-0 transition-transform duration-300 group-hover:scale-110"
       ></div>
       <div className="absolute inset-0 z-10 grid place-content-center">
-        <p className="rounded-xl bg-gradient-to-br from-white/20 to-white/0 p-8 text-[3vw] font-black uppercase text-white backdrop-blur-lg xl:text-[2vw] 2xl:text-[1.5vw]">
+        <p className="rounded-xl bg-gradient-to-br from-white/20 to-white/0 p-8 text-[6vw] font-black uppercase text-white backdrop-blur-lg xl:text-[2vw] 2xl:text-[1.5vw]">
           {card.title}
         </p>
       </div>

@@ -1,12 +1,10 @@
 "use client";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
-import Image from "next/image";
 import { TypingAnimation } from "./magicui/typing-animation";
+import Image from "next/image";
 
-type Props = {};
-
-const HeroComponent = (props: Props) => {
+const HeroComponent = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -15,25 +13,12 @@ const HeroComponent = (props: Props) => {
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
-  const opacity2 = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0, 1]);
 
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.2]);
 
-  const position = useTransform(scrollYProgress, (pos) =>
-    pos >= 1 ? "absolute" : "fixed",
-  );
-
   return (
     <motion.div ref={ref}>
-      <div className="relative top-0 h-[150vh] overflow-x-clip">
-        {/* <motion.video
-          src="/videos/waterfall.mp4"
-          className="sticky left-0 top-0 size-full h-screen object-cover"
-          autoPlay
-          muted
-          loop
-          style={{}}
-        /> */}
+      <div className="relative top-0 h-[150vh] overflow-clip">
         <motion.img
           style={{ scale }}
           src="/images/slide_.jpg"
@@ -43,6 +28,13 @@ const HeroComponent = (props: Props) => {
         />
       </div>
       <motion.h1 style={{ opacity }} className="absolute bottom-10 p-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          <Image src="/images/logo.png" alt="logo" width={150} height={150} />
+        </motion.div>
         <TypingAnimation className="text-[8vw] font-bold uppercase text-white">
           อุทยานแห่งชาติเขาใหญ่
         </TypingAnimation>
