@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Footer() {
@@ -39,6 +40,20 @@ function Footer() {
             </div>
             <div className="flex flex-col gap-2">
               <p>© 2021 อุทยานแห่งชาติเขาใหญ่</p>
+              <p>
+                โปรเจคนี้จัดทำขึ้นเพื่อวัตถุประสงค์ทางการศึกษาและเป็นตัวอย่างเท่านั้น
+                และมิได้มีเจตนาเพื่อการใช้งานเชิงพาณิชย์
+              </p>
+              <p>
+                ข้อมูลทั้งหมดนำมาจาก{" "}
+                <Link
+                  href="https://www.khaoyainationalpark.com/"
+                  target="_blank"
+                  className="underline"
+                >
+                  เว็บเขาใหญ่
+                </Link>
+              </p>
             </div>
           </div>
         </div>
